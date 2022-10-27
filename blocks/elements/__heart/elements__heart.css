@@ -1,0 +1,10 @@
+.elements__heart {
+  padding: 0;
+  align-self: center;
+  max-width: 22px;
+  width: 100%;
+  min-height: 19px;
+  background-image: url(../../../images/heart.svg);
+  background-color: #FFFFFF;
+  border: none;
+}

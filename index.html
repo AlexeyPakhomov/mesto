@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./pages/index.css">
+  <title>Mesto</title>
+  <link rel="icon" href="./images/logo_white.svg">
+  <meta name="description" content="Страница для публикации фото под своим аккаунтом.">
+  <meta name="keywords" content="Mesto, фото, лайки.">
+  <meta name="author" content="Alexey Pakhomov">
+</head>
+
+<body class="root">
+  <!-- Header -->
+  <header class="header">
+    <img class="header__logo" src="./images/logo_white.svg" alt="Логотип. Mesto">
+  </header>
+
+  <main class="content">
+    <!-- Секция profile -->
+    <section class="profile" aria-label="секция-без-заголовка">
+      <img class="profile__avatar" src="./images/avatar.jpg" alt="Аватарка">
+      <article class="profile__info">
+        <h1 class="profile__name">Жак-Ив Кусто</h1>
+        <p class="profile__specialization">Исследователь океана</p>
+        <button class="profile__edit-button link" type="submit">
+          <img class="profile__edit-button-img" src="./images/edit-button.svg" alt="Кнопка редактирования профиля">
+        </button>
+      </article>
+      <button class="profile__add-button link" type="submit">
+        <img class="profile__add-button-img" src="./images/add-button.svg" alt="
+        Кнопка добавления контента">
+      </button>
+    </section>
+
+    <!-- Секция elements -->
+    <section class="elements">
+
+      <ul class="elements__container list">
+        <li>
+          <figure class="elements__figure">
+            <img class="elements__pic" src="./images/belalakaya.jpg" alt="гора_Белалакая">
+            <figcaption class="elements__figcaption">
+              <h2 class="elements__title">Гора Белалакая</h2>
+              <button class="elements__heart elements__heart_active link link_design_heart" type="submit"></button>
+            </figcaption>
+          </figure>
+        </li>
+
+        <li>
+          <figure class="elements__figure">
+            <img class="elements__pic" src="./images/checnya.jpg" alt="Чечня">
+            <figcaption class="elements__figcaption">
+              <h2 class="elements__title">Чечня</h2>
+              <button class="elements__heart elements__heart_active link link_design_heart" type="submit"></button>
+            </figcaption>
+          </figure>
+        </li>
+
+        <li>
+          <figure class="elements__figure">
+            <img class="elements__pic" src="./images/dagestan.jpg" alt="гора_Тлилимеэр">
+            <figcaption class="elements__figcaption">
+              <h2 class="elements__title">Гора Тлилимеэр</h2>
+              <button class="elements__heart elements__heart_active link link_design_heart"></button>
+            </figcaption>
+          </figure>
+        </li>
+
+        <li>
+          <figure class="elements__figure">
+            <img class="elements__pic" src="./images/chegem.jpg" alt="Чегем">
+            <figcaption class="elements__figcaption">
+              <h2 class="elements__title">Чегем</h2>
+              <button class="elements__heart elements__heart_active link link_design_heart" type="submit"></button>
+            </figcaption>
+          </figure>
+        </li>
+
+        <li>
+          <figure class="elements__figure">
+            <img class="elements__pic" src="./images/elbrus.jpg" alt="Эльбрус">
+            <figcaption class="elements__figcaption">
+              <h2 class="elements__title">Гора Эльбрус</h2>
+              <button class="elements__heart elements__heart_active link link_design_heart" type="submit"></button>
+            </figcaption>
+          </figure>
+        </li>
+
+        <li>
+          <figure class="elements__figure">
+            <img class="elements__pic" src="./images/ul'gen.jpg" alt="гора_Ульген">
+            <figcaption class="elements__figcaption">
+              <h2 class="elements__title">Гора Домбай-Ульген</h2>
+              <button class="elements__heart elements__heart_active link link_design_heart" type="submit"></button>
+            </figcaption>
+          </figure>
+        </li>
+      </ul>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p class="footer__text">&copy; 2020 Mesto Russia</p>
+  </footer>
+
+  <section class="popup popup_opened">
+    <form class="popup__container" action="#" id="formUserSpecialization" name="formPopup">
+      <img class="popup__close-icon link" src="./images/close-icon_disabled.png" alt="Кнопка закрытия окна">
+      <h2 class="popup__title">Редактировать профиль</h2>
+      <input class="popup__field-text" type="text" name="name" id="formUserSpecialization" placeholder="Жак-Ив Кусто">
+      <input class="popup__field-text" type="text" name="specialization" id="formUserSpecialization"
+        placeholder="Исследователь океана">
+      <button class="popup__button link link_design_button" type="submit">Сохранить</button>
+    </form>
+  </section>
+
+</body>
+
+</html>

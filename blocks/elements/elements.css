@@ -1,0 +1,12 @@
+.elements {
+  margin: 0 auto;
+  margin-bottom: 66px;
+  max-width: 880px;
+  font-family: 'Inter', sans-serif;
+}
+
+@media screen and (max-width: 424px) {
+  .elements {
+    margin-bottom: 48px;
+  }
+}

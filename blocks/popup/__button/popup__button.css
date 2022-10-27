@@ -1,0 +1,24 @@
+.popup__button {
+  margin-bottom: 37px;
+  padding: 0;
+  width: 358px;
+  height: 50px;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 22px;
+  text-align: center;
+  color: #FFFFFF;
+  background: #000000;
+  border: none;
+  border-radius: 2px;
+}
+
+@media screen and (max-width: 500px) {
+  .popup__button {
+    max-width: calc(100% - 44px);
+    height: 46px;
+    font-size: 14px;
+    line-height: 17px;
+    margin-bottom: 25px;
+  }
+}

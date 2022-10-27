@@ -1,0 +1,23 @@
+.profile {
+  margin: 0 auto;
+  margin-bottom: 50px;
+  max-width: 880px;
+  min-height: 120px;
+  font-family: 'Inter', sans-serif;
+  display: flex;
+  align-items: center;
+}
+
+@media screen and (max-width: 767px) {
+  .profile {
+    margin-bottom: 36px;
+    flex-direction: column;
+    justify-content: center;
+  }
+}
+
+@media screen and (max-width: 424px) {
+  .profile {
+    max-width: calc(100% - 38px);
+  }
+}
