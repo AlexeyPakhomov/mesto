@@ -3,7 +3,15 @@
   margin: 0;
   font-weight: 500;
   font-size: 42px;
-  line-height: 1.14;
+  line-height: 0.93;
+  /* В фигме указан 1.14, но фактический размер области = 39px, а не 48px */
+  white-space: nowrap;
+}
+
+@media screen and (max-width: 1000px) {
+  .profile__name {
+    font-size: 36px;
+  }
 }
 
 @media screen and (max-width: 424px) {
@@ -14,5 +22,6 @@
     justify-self: end;
     margin-bottom: 14px;
     height: 26px;
+    white-space: nowrap;
   }
 }

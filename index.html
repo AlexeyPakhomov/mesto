@@ -8,7 +8,7 @@
   <link rel="stylesheet" href="./pages/index.css">
   <title>Mesto</title>
   <link rel="icon" href="./images/logo_white.svg">
-  <meta name="description" content="Страница для публикации фото под своим аккаунтом.">
+  <meta name="description" content="Сайт для публикации фото под своим аккаунтом.">
   <meta name="keywords" content="Mesto, фото, лайки.">
   <meta name="author" content="Alexey Pakhomov">
 </head>
@@ -38,14 +38,13 @@
 
     <!-- Секция elements -->
     <section class="elements">
-
       <ul class="elements__container list">
         <li>
           <figure class="elements__figure">
             <img class="elements__pic" src="./images/belalakaya.jpg" alt="гора_Белалакая">
             <figcaption class="elements__figcaption">
               <h2 class="elements__title">Гора Белалакая</h2>
-              <button class="elements__heart elements__heart_active link link_design_heart" type="submit"></button>
+              <button class="elements__heart elements__heart_active link" type="submit"></button>
             </figcaption>
           </figure>
         </li>
@@ -55,7 +54,7 @@
             <img class="elements__pic" src="./images/checnya.jpg" alt="Чечня">
             <figcaption class="elements__figcaption">
               <h2 class="elements__title">Чечня</h2>
-              <button class="elements__heart elements__heart_active link link_design_heart" type="submit"></button>
+              <button class="elements__heart elements__heart_active link" type="submit"></button>
             </figcaption>
           </figure>
         </li>
@@ -65,7 +64,7 @@
             <img class="elements__pic" src="./images/dagestan.jpg" alt="гора_Тлилимеэр">
             <figcaption class="elements__figcaption">
               <h2 class="elements__title">Гора Тлилимеэр</h2>
-              <button class="elements__heart elements__heart_active link link_design_heart"></button>
+              <button class="elements__heart elements__heart_active link"></button>
             </figcaption>
           </figure>
         </li>
@@ -75,7 +74,7 @@
             <img class="elements__pic" src="./images/chegem.jpg" alt="Чегем">
             <figcaption class="elements__figcaption">
               <h2 class="elements__title">Чегем</h2>
-              <button class="elements__heart elements__heart_active link link_design_heart" type="submit"></button>
+              <button class="elements__heart elements__heart_active link" type="submit"></button>
             </figcaption>
           </figure>
         </li>
@@ -85,7 +84,7 @@
             <img class="elements__pic" src="./images/elbrus.jpg" alt="Эльбрус">
             <figcaption class="elements__figcaption">
               <h2 class="elements__title">Гора Эльбрус</h2>
-              <button class="elements__heart elements__heart_active link link_design_heart" type="submit"></button>
+              <button class="elements__heart elements__heart_active link" type="submit"></button>
             </figcaption>
           </figure>
         </li>
@@ -95,7 +94,7 @@
             <img class="elements__pic" src="./images/ul'gen.jpg" alt="гора_Ульген">
             <figcaption class="elements__figcaption">
               <h2 class="elements__title">Гора Домбай-Ульген</h2>
-              <button class="elements__heart elements__heart_active link link_design_heart" type="submit"></button>
+              <button class="elements__heart elements__heart_active link" type="submit"></button>
             </figcaption>
           </figure>
         </li>
@@ -106,18 +105,20 @@
   <footer class="footer">
     <p class="footer__text">&copy; 2020 Mesto Russia</p>
   </footer>
-
-  <section class="popup popup_opened">
+  <!-- Секция popup -->
+  <section class="popup">
     <form class="popup__container" action="#" id="formUserSpecialization" name="formPopup">
-      <img class="popup__close-icon link" src="./images/close-icon_disabled.png" alt="Кнопка закрытия окна">
+      <button class="popup__close-icon" type="submit">
+        <img class="popup__close-icon-img link" src="./images/close-icon.svg" alt="Кнопка закрытия окна">
+      </button>
       <h2 class="popup__title">Редактировать профиль</h2>
-      <input class="popup__field-text" type="text" name="name" id="formUserSpecialization" placeholder="Жак-Ив Кусто">
-      <input class="popup__field-text" type="text" name="specialization" id="formUserSpecialization"
-        placeholder="Исследователь океана">
-      <button class="popup__button link link_design_button" type="submit">Сохранить</button>
+      <input class="popup__field-text" type="text" name="name" form="formUserSpecialization" maxlength="15">
+      <input class="popup__field-text" type="text" name="specialization" form="formUserSpecialization" maxlength="60">
+      <input class="popup__button link" type="submit" form="formUserSpecialization" value="Сохранить">
     </form>
   </section>
 
+  <script src="./pages/index.js"></script>
 </body>
 
 </html>

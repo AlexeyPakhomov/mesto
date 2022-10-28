@@ -3,10 +3,7 @@
 /* Общие стили */
 @import url(../blocks/root/root.css);
 @import url(../blocks/link/link.css);
-@import url(../blocks/link/_design/link_design_button.css);
-@import url(../blocks/link/_design/link_design_heart.css);
 @import url(../blocks/list/list.css);
-@import url(../blocks/content/content.css);
 /* Header */
 @import url(../blocks/header/header.css);
 @import url(../blocks/header/__logo/header__logo.css);
@@ -36,6 +33,7 @@
 @import url(../blocks/popup/popup.css);
 @import url(../blocks/popup/_opened/popup_opened.css);
 @import url(../blocks/popup/__close-icon/popup__close-icon.css);
+@import url(../blocks/popup/__close-icon-img/popup__close-icon-img.css);
 @import url(../blocks/popup/__container/popup__container.css);
 @import url(../blocks/popup/__title/popup__title.css);
 @import url(../blocks/popup/__field-text/popup__field-text.css);

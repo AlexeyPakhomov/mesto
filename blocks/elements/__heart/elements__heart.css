@@ -8,3 +8,7 @@
   background-color: #FFFFFF;
   border: none;
 }
+
+.elements__heart:hover {
+  opacity: .5;
+}
