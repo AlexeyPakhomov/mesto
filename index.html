@@ -26,77 +26,77 @@
       <article class="profile__info">
         <h1 class="profile__name">Жак-Ив Кусто</h1>
         <p class="profile__specialization">Исследователь океана</p>
-        <button class="profile__edit-button link" type="submit">
+        <button class="profile__edit-button link" type="button">
           <img class="profile__edit-button-img" src="./images/edit-button.svg" alt="Кнопка редактирования профиля">
         </button>
       </article>
-      <button class="profile__add-button link" type="submit">
+      <button class="profile__add-button link" type="button">
         <img class="profile__add-button-img" src="./images/add-button.svg" alt="
         Кнопка добавления контента">
       </button>
     </section>
 
     <!-- Секция elements -->
-    <section class="elements">
+    <section class="elements" aria-label="секция-без-заголовка">
       <ul class="elements__container list">
         <li>
-          <figure class="elements__figure">
+          <article class="elements__card">
             <img class="elements__pic" src="./images/belalakaya.jpg" alt="гора_Белалакая">
-            <figcaption class="elements__figcaption">
+            <div class="elements__caption">
               <h2 class="elements__title">Гора Белалакая</h2>
-              <button class="elements__heart elements__heart_active link" type="submit"></button>
-            </figcaption>
-          </figure>
+              <button class="elements__heart elements__heart_active link" type="button"></button>
+            </div>
+          </article>
         </li>
 
         <li>
-          <figure class="elements__figure">
+          <article class="elements__card">
             <img class="elements__pic" src="./images/checnya.jpg" alt="Чечня">
-            <figcaption class="elements__figcaption">
+            <div class="elements__caption">
               <h2 class="elements__title">Чечня</h2>
-              <button class="elements__heart elements__heart_active link" type="submit"></button>
-            </figcaption>
-          </figure>
+              <button class="elements__heart elements__heart_active link" type="button"></button>
+            </div>
+          </article>
         </li>
 
         <li>
-          <figure class="elements__figure">
+          <article class="elements__card">
             <img class="elements__pic" src="./images/dagestan.jpg" alt="гора_Тлилимеэр">
-            <figcaption class="elements__figcaption">
+            <div class="elements__caption">
               <h2 class="elements__title">Гора Тлилимеэр</h2>
-              <button class="elements__heart elements__heart_active link"></button>
-            </figcaption>
-          </figure>
+              <button class="elements__heart elements__heart_active link" type="button"></button>
+            </div>
+          </article>
         </li>
 
         <li>
-          <figure class="elements__figure">
+          <article class="elements__card">
             <img class="elements__pic" src="./images/chegem.jpg" alt="Чегем">
-            <figcaption class="elements__figcaption">
+            <div class="elements__caption">
               <h2 class="elements__title">Чегем</h2>
-              <button class="elements__heart elements__heart_active link" type="submit"></button>
-            </figcaption>
-          </figure>
+              <button class="elements__heart elements__heart_active link" type="button"></button>
+            </div>
+          </article>
         </li>
 
         <li>
-          <figure class="elements__figure">
+          <article class="elements__card">
             <img class="elements__pic" src="./images/elbrus.jpg" alt="Эльбрус">
-            <figcaption class="elements__figcaption">
+            <div class="elements__caption">
               <h2 class="elements__title">Гора Эльбрус</h2>
-              <button class="elements__heart elements__heart_active link" type="submit"></button>
-            </figcaption>
-          </figure>
+              <button class="elements__heart elements__heart_active link" type="button"></button>
+            </div>
+          </article>
         </li>
 
         <li>
-          <figure class="elements__figure">
+          <article class="elements__card">
             <img class="elements__pic" src="./images/ul'gen.jpg" alt="гора_Ульген">
-            <figcaption class="elements__figcaption">
+            <div class="elements__caption">
               <h2 class="elements__title">Гора Домбай-Ульген</h2>
-              <button class="elements__heart elements__heart_active link" type="submit"></button>
-            </figcaption>
-          </figure>
+              <button class="elements__heart elements__heart_active link" type="button"></button>
+            </div>
+          </article>
         </li>
       </ul>
     </section>
@@ -107,18 +107,21 @@
   </footer>
   <!-- Секция popup -->
   <section class="popup">
-    <form class="popup__container" action="#" id="formUserSpecialization" name="formPopup">
-      <button class="popup__close-icon" type="submit">
+    <div class="popup__container">
+      <button class="popup__close-icon" type="button">
         <img class="popup__close-icon-img link" src="./images/close-icon.svg" alt="Кнопка закрытия окна">
       </button>
       <h2 class="popup__title">Редактировать профиль</h2>
-      <input class="popup__field-text" type="text" name="name" form="formUserSpecialization" maxlength="15">
-      <input class="popup__field-text" type="text" name="specialization" form="formUserSpecialization" maxlength="60">
-      <input class="popup__button link" type="submit" form="formUserSpecialization" value="Сохранить">
-    </form>
+      <form class="popup__form" action="#" id="formUserSpecialization" name="formPopup">
+        <input class="popup__input popup__input_text_name" type="text" name="name" form="formUserSpecialization">
+        <input class="popup__input popup__input_text_job" type="text" name="specialization"
+          form="formUserSpecialization">
+        <button class="popup__button link" type="submit" form="formUserSpecialization">Сохранить</button>
+      </form>
+    </div>
   </section>
 
-  <script src="./pages/index.js"></script>
+  <script src="./scripts/index.js"></script>
 </body>
 
 </html>
