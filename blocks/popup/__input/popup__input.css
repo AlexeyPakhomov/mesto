@@ -1,4 +1,4 @@
-.popup__field-text {
+.popup__input {
   margin-bottom: 30px;
   padding: 0;
   box-sizing: border-box;
@@ -8,28 +8,31 @@
   font-weight: 400;
   font-size: 14px;
   line-height: 17px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
   border: none;
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
 }
 
-.popup__field-text:nth-child(4) {
+.popup__input:nth-child(2) {
   margin-bottom: 48px;
 }
 
-.popup__field-text::placeholder {
+.popup__input::placeholder {
   color: #000000;
 }
 
-.popup__field-text:focus {
+.popup__input:focus {
   outline-style: none;
 }
 
 @media screen and (max-width: 500px) {
-  .popup__field-text {
-    max-width: calc(100% - 44px);
+  .popup__input {
+    max-width: 100%;
   }
 
-  .popup__field-text:nth-child(4) {
+  .popup__input:nth-child(2) {
     margin-bottom: 45px;
   }
 }

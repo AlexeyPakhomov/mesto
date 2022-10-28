@@ -1,0 +1,9 @@
+@media screen and (max-width: 500px) {
+  .popup__form {
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: calc(100% - 44px);
+  }
+}
