@@ -13,9 +13,6 @@ function togglePopup() {
   if (popupContainer.classList.contains('popup_opened')) {
     nameInput.value = profileName.textContent;
     jobInput.value = profileSpecialization.textContent;
-  } else {
-    nameInput.value = '';
-    jobInput.value = '';
   };
 };
 
@@ -28,9 +25,4 @@ function formSubmitHandler(evt) {
 
 openPopup.addEventListener('click',togglePopup);
 closePopup.addEventListener('click',togglePopup);
-popupContainer.addEventListener('click',function () {
-  if (event.target === event.currentTarget) {
-    popupContainer.classList.toggle('popup_opened');
-  }
-});
 formElement.addEventListener('submit',formSubmitHandler);
