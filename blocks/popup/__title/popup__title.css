@@ -4,7 +4,9 @@
   color: #000000;
   font-weight: 900;
   font-size: 24px;
-  line-height: 29px;
+  line-height: 1;
+  /* В фигме указан 29px, но фактический размер области = 23px, а не 29px */
+
 }
 
 @media screen and (max-width: 500px) {

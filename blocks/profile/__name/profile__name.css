@@ -21,7 +21,8 @@
   .profile__name {
     max-width: 230px;
     font-size: 27px;
-    line-height: 33px;
+    line-height: 1;
+    /* В фигме указан 33px, но фактический размер области = 26px, а не 33px */
     text-align: center;
     justify-self: end;
     margin-bottom: 14px;
