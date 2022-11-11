@@ -1,6 +1,7 @@
 .elements__card {
+  position: relative;
   margin: 0;
-  max-width: 282px;
+  width: 282px;
   height: 361px;
   border-radius: 10px;
   overflow: hidden;

@@ -4,8 +4,7 @@
   max-width: 22px;
   width: 100%;
   min-height: 19px;
-  background-image: url(../../../images/heart.svg);
-  background-color: #FFFFFF;
+  background: url(../../../images/heart.svg) center no-repeat;
   border: none;
 }
 

@@ -39,87 +39,78 @@
     <!-- Секция elements -->
     <section class="elements" aria-label="секция-без-заголовка">
       <ul class="elements__container list">
-        <li>
-          <article class="elements__card">
-            <img class="elements__pic" src="./images/belalakaya.jpg" alt="гора_Белалакая">
-            <div class="elements__caption">
-              <h2 class="elements__title">Гора Белалакая</h2>
-              <button class="elements__heart elements__heart_active link" type="button"></button>
-            </div>
-          </article>
-        </li>
 
-        <li>
-          <article class="elements__card">
-            <img class="elements__pic" src="./images/checnya.jpg" alt="Чечня">
-            <div class="elements__caption">
-              <h2 class="elements__title">Чечня</h2>
-              <button class="elements__heart elements__heart_active link" type="button"></button>
-            </div>
-          </article>
-        </li>
-
-        <li>
-          <article class="elements__card">
-            <img class="elements__pic" src="./images/dagestan.jpg" alt="гора_Тлилимеэр">
-            <div class="elements__caption">
-              <h2 class="elements__title">Гора Тлилимеэр</h2>
-              <button class="elements__heart elements__heart_active link" type="button"></button>
-            </div>
-          </article>
-        </li>
-
-        <li>
-          <article class="elements__card">
-            <img class="elements__pic" src="./images/chegem.jpg" alt="Чегем">
-            <div class="elements__caption">
-              <h2 class="elements__title">Чегем</h2>
-              <button class="elements__heart elements__heart_active link" type="button"></button>
-            </div>
-          </article>
-        </li>
-
-        <li>
-          <article class="elements__card">
-            <img class="elements__pic" src="./images/elbrus.jpg" alt="Эльбрус">
-            <div class="elements__caption">
-              <h2 class="elements__title">Гора Эльбрус</h2>
-              <button class="elements__heart elements__heart_active link" type="button"></button>
-            </div>
-          </article>
-        </li>
-
-        <li>
-          <article class="elements__card">
-            <img class="elements__pic" src="./images/ul'gen.jpg" alt="гора_Ульген">
-            <div class="elements__caption">
-              <h2 class="elements__title">Гора Домбай-Ульген</h2>
-              <button class="elements__heart elements__heart_active link" type="button"></button>
-            </div>
-          </article>
-        </li>
       </ul>
     </section>
   </main>
 
+  <!-- Footer -->
   <footer class="footer">
     <p class="footer__text">&copy; 2020 Mesto Russia</p>
   </footer>
-  <!-- Секция popup -->
-  <section class="popup">
+
+  <!-- Секция popup profile -->
+  <section class="popup popup_type_profile">
     <div class="popup__container">
-      <button class="popup__close-icon" type="button">
+      <button class="popup__close-icon popup__close-icon_block_profile" type="button">
         <img class="popup__close-icon-img link" src="./images/close-icon.svg" alt="Кнопка закрытия окна">
       </button>
       <h2 class="popup__title">Редактировать профиль</h2>
-      <form class="popup__form" action="#" id="formUserSpecialization" name="formPopup">
-        <input class="popup__input popup__input_text_name" type="text" name="name" form="formUserSpecialization">
-        <input class="popup__input popup__input_text_job" type="text" name="specialization"
+      <form class="popup__form popup__form_block_profile" action="#" id="formUserSpecialization" name="formPopup">
+        <input class="popup__input popup__input_text_name" type="text" name="name" placeholder="Имя пользователя"
+          form="formUserSpecialization">
+        <input class="popup__input popup__input_text_job" type="text" name="specialization" placeholder="Специализация"
           form="formUserSpecialization">
         <button class="popup__button link" type="submit" form="formUserSpecialization">Сохранить</button>
       </form>
     </div>
   </section>
+
+  <!-- Секция popup add photo -->
+  <section class="popup popup_type_photo">
+    <div class="popup__container">
+      <button class="popup__close-icon popup__close-icon_block_photo" type="button">
+        <img class="popup__close-icon-img link" src="./images/close-icon.svg" alt="Кнопка закрытия окна">
+      </button>
+      <h2 class="popup__title">Новое место</h2>
+      <form class="popup__form popup__form_block_photo" action="#" id="formPlace" name="formPopup">
+        <input class="popup__input popup__input_color_text popup__input_text_place" type="text" name="place"
+          placeholder="Название" form="formPlace">
+        <input class="popup__input popup__input_color_text popup__input_text_url" type="text" name="url"
+          placeholder="Ссылка на картинку" form="formPlace">
+        <button class="popup__button link" type="submit" form="formPlace">Создать</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Секция popup large photo -->
+  <section class="popup popup_type_large-photo">
+    <div class="popup__container-large-photo">
+      <button class="popup__close-icon popup__close-icon_block_large-photo" type="button">
+        <img class="popup__close-icon-img link" src="./images/close-icon.svg" alt="Кнопка закрытия окна">
+      </button>
+      <figure class="popup__figure">
+        <img src="" alt="Описание фото:" class="popup__large-photo">
+        <figcaption class="popup__figcaption"></figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- template -->
+  <template id="template-elements">
+    <li>
+      <article class="elements__card">
+        <img class="elements__pic" src="" alt="Описание фото:">
+        <button class="elements__recycle-bin link" type="button"></button>
+        <div class="elements__caption">
+          <h2 class="elements__title">
+
+          </h2>
+          <button class="elements__heart link" type="button"></button>
+        </div>
+      </article>
+    </li>
+  </template>
 
   <script src="./scripts/index.js"></script>
 </body>

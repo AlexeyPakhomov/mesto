@@ -1,0 +1,12 @@
+.elements__recycle-bin {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  padding: 0;
+  background-image: url(../../../images/recycle-bin.svg);
+  max-width: 18px;
+  width: 100%;
+  height: 19px;
+  border: none;
+  background-color: transparent;
+}
