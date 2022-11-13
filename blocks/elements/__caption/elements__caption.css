@@ -3,5 +3,6 @@
   margin: 25px 20px auto 21px;
   display: flex;
   justify-content: space-between;
-  align-items: flex-end;
+  /* align-items: flex-end; */
+  gap: 10px;
 }

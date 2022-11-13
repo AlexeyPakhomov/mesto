@@ -50,9 +50,9 @@
   </footer>
 
   <!-- Секция popup profile -->
-  <section class="popup popup_type_profile">
+  <div class="popup popup_type_profile">
     <div class="popup__container">
-      <button class="popup__close-icon popup__close-icon_block_profile" type="button">
+      <button class="popup__close-icon" type="button">
         <img class="popup__close-icon-img link" src="./images/close-icon.svg" alt="Кнопка закрытия окна">
       </button>
       <h2 class="popup__title">Редактировать профиль</h2>
@@ -64,12 +64,12 @@
         <button class="popup__button link" type="submit" form="formUserSpecialization">Сохранить</button>
       </form>
     </div>
-  </section>
+  </div>
 
   <!-- Секция popup add photo -->
-  <section class="popup popup_type_photo">
+  <div class="popup popup_type_photo">
     <div class="popup__container">
-      <button class="popup__close-icon popup__close-icon_block_photo" type="button">
+      <button class="popup__close-icon" type="button">
         <img class="popup__close-icon-img link" src="./images/close-icon.svg" alt="Кнопка закрытия окна">
       </button>
       <h2 class="popup__title">Новое место</h2>
@@ -81,26 +81,28 @@
         <button class="popup__button link" type="submit" form="formPlace">Создать</button>
       </form>
     </div>
-  </section>
+  </div>
 
   <!-- Секция popup large photo -->
-  <section class="popup popup_type_large-photo" aria-label="секция-без-заголовка">
+  <div class="popup popup_type_large-photo" aria-label="секция-без-заголовка">
     <div class="popup__container-large-photo">
-      <button class="popup__close-icon popup__close-icon_block_large-photo" type="button">
+      <button class="popup__close-icon" type="button">
         <img class="popup__close-icon-img link" src="./images/close-icon.svg" alt="Кнопка закрытия окна">
       </button>
       <figure class="popup__figure">
-        <img src="#" alt="Описание фото:" class="popup__large-photo">
+        <img class="popup__large-photo" src="#" alt="Описание фото:">
         <figcaption class="popup__figcaption"></figcaption>
       </figure>
     </div>
-  </section>
+  </div>
 
   <!-- template -->
   <template id="template-elements">
     <li>
       <article class="elements__card">
-        <img class="elements__pic" src="#" alt="Описание фото:">
+        <div class="elements__block-pic">
+          <img class="elements__pic" src="#" alt="Описание фото:">
+        </div>
         <button class="elements__recycle-bin link" type="button"></button>
         <div class="elements__caption">
           <h2 class="elements__title">
@@ -112,6 +114,7 @@
     </li>
   </template>
 
+  <script src="./scripts/data.js"></script>
   <script src="./scripts/index.js"></script>
 </body>
 
