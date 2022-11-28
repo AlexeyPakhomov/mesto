@@ -9,6 +9,6 @@
   color: #FF0000;
   visibility: hidden;
   opacity: 0;
-  transition: .5s linear;
+  transition: opacity .5s linear;
   box-sizing: border-box;
 }
