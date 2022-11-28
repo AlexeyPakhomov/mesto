@@ -56,12 +56,21 @@
         <img class="popup__close-icon-img link" src="./images/close-icon.svg" alt="Кнопка закрытия окна">
       </button>
       <h2 class="popup__title">Редактировать профиль</h2>
-      <form class="popup__form popup__form_block_profile" action="#" id="formUserSpecialization" name="formPopup">
-        <input class="popup__input popup__input_text_name" type="text" name="name" placeholder="Имя пользователя"
-          form="formUserSpecialization">
-        <input class="popup__input popup__input_text_job" type="text" name="specialization" placeholder="Специализация"
-          form="formUserSpecialization">
-        <button class="popup__button link" type="submit" form="formUserSpecialization">Сохранить</button>
+      <form class="popup__form popup__form_block_profile" action="#" id="formUserSpecialization" name="formProfile"
+        novalidate>
+        <div class="popup__input-container">
+          <input class="popup__input popup__input_text_name" form="formUserSpecialization" type="text" name="name"
+            id="name-input" placeholder="Имя пользователя" minlength="2" maxlength="40" required>
+          <span class="popup__input-error name-input-error"></span>
+        </div>
+        <div class="popup__input-container">
+          <input class="popup__input popup__input_text_job" form="formUserSpecialization" type="text"
+            name="specialization" id="specialization-input" placeholder="Специализация" minlength="2" maxlength="200"
+            required>
+          <span class="popup__input-error specialization-input-error"></span>
+        </div>
+        <button class="popup__button popup__button_disabled link" type="submit"
+          form="formUserSpecialization">Сохранить</button>
       </form>
     </div>
   </div>
@@ -73,12 +82,18 @@
         <img class="popup__close-icon-img link" src="./images/close-icon.svg" alt="Кнопка закрытия окна">
       </button>
       <h2 class="popup__title">Новое место</h2>
-      <form class="popup__form popup__form_block_photo" action="#" id="formPlace" name="formPopup">
-        <input class="popup__input popup__input_color_text popup__input_text_place" type="text" name="place"
-          placeholder="Название" form="formPlace">
-        <input class="popup__input popup__input_color_text popup__input_text_url" type="text" name="url"
-          placeholder="Ссылка на картинку" form="formPlace">
-        <button class="popup__button link" type="submit" form="formPlace">Создать</button>
+      <form class="popup__form popup__form_block_photo" action="#" id="formPlace" name="formAddPhoto" novalidate>
+        <div class="popup__input-container">
+          <input class="popup__input popup__input_text_place" form="formPlace" type="text" name="place" id="place-input"
+            placeholder="Название" minlength="2" maxlength="30" required>
+          <span class="popup__input-error place-input-error"></span>
+        </div>
+        <div class="popup__input-container">
+          <input class="popup__input popup__input_text_url" form="formPlace" type="url" name="url" id="url-input"
+            placeholder="Ссылка на картинку" required>
+          <span class="popup__input-error url-input-error"></span>
+        </div>
+        <button class="popup__button popup__button_disabled link" type="submit" form="formPlace">Создать</button>
       </form>
     </div>
   </div>
@@ -114,6 +129,7 @@
     </li>
   </template>
 
+  <script src="./scripts/validate.js"></script>
   <script src="./scripts/data.js"></script>
   <script src="./scripts/index.js"></script>
 </body>

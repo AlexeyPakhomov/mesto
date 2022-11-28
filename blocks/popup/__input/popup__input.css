@@ -1,11 +1,6 @@
 .popup__input {
-  margin-bottom: 30px;
   padding: 0 0 12px 0;
   /* C помощью padding подогнал расположение текста в input */
-  box-sizing: border-box;
-  width: 358px;
-  height: 27px;
-  display: block;
   font-weight: 400;
   font-size: 14px;
   line-height: 1;
@@ -17,12 +12,9 @@
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
 }
 
-.popup__input:nth-child(2) {
-  margin-bottom: 48px;
-}
-
 .popup__input::placeholder {
-  color: #000000;
+  /* color: #000000; */
+  color: #C4C4C4;
 }
 
 .popup__input:focus {
@@ -32,9 +24,5 @@
 @media screen and (max-width: 500px) {
   .popup__input {
     max-width: 100%;
-  }
-
-  .popup__input:nth-child(2) {
-    margin-bottom: 45px;
   }
 }

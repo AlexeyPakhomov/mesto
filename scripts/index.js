@@ -19,10 +19,16 @@ const captionLargePhoto = document.querySelector('.popup__figcaption');
 
 const openPopup = (popup) => {
   popup.classList.add('popup_opened');
+  document.addEventListener('keydown',closeEsc);
+  popup.addEventListener('click',closeOverlay);
+  enableValidation()
 };
 
 const closePopup = (popup) => {
   popup.classList.remove('popup_opened');
+  document.removeEventListener('keydown',closeEsc);
+  popup.removeEventListener('click',closeOverlay);
+  deleteSpan();
 };
 
 const openEditProfilePopup = () => {
@@ -32,6 +38,8 @@ const openEditProfilePopup = () => {
 };
 
 const openAddPhotoPopup = () => {
+  inputAddPlacePhoto.value = '';
+  inputAddUrlPhoto.value = '';
   openPopup(popupAddPhoto);
 };
 
@@ -48,6 +56,19 @@ popups.forEach((popup) => {
     closePopup(popup);
   });
 });
+
+const closeEsc = (evt) => {
+  if (evt.key === 'Escape') {
+    const popupOpen = document.querySelector('.popup_opened');
+    closePopup(popupOpen);
+  }
+}
+
+const closeOverlay = (evt) => {
+  if (evt.target === evt.currentTarget) {
+    closePopup(evt.currentTarget);
+  }
+}
 
 const submitFormHandlerProfile = (evt) => {
   evt.preventDefault();
@@ -102,7 +123,7 @@ initialCards.forEach((name,img) => {
   renderCard(name,img);
 });
 
-buttonOpenPopupProfile.addEventListener('click',openEditProfilePopup);
-buttonOpenPopupPhoto.addEventListener('click',openAddPhotoPopup);
 formAddProfile.addEventListener('submit',submitFormHandlerProfile);
 formAddPhoto.addEventListener('submit',submitFormHandlerPhoto);
+buttonOpenPopupProfile.addEventListener('click',openEditProfilePopup);
+buttonOpenPopupPhoto.addEventListener('click',openAddPhotoPopup);
