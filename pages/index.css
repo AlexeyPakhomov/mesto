@@ -49,5 +49,5 @@
 @import url(../blocks/popup/__input-container/popup__input-container.css);
 @import url(../blocks/popup/__input-error/popup__input-error.css);
 @import url(../blocks/popup/__input-error/_active/popup__input-error_active.css);
-@import url(../blocks/popup/__input-error/_border/popup__input-error_border_error.css);
 @import url(../blocks/popup/__button/_disabled/popup__button_disabled.css);
+@import url(../blocks/popup/_animation/popup_animation.css);

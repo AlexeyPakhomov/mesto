@@ -16,30 +16,35 @@ const elementsTemplateContainer = document.querySelector('.elements__container')
 const templateAddCard = document.querySelector('#template-elements').content;
 const largePhoto = document.querySelector('.popup__large-photo');
 const captionLargePhoto = document.querySelector('.popup__figcaption');
+const buttonSubmitProfile = popupProfile.querySelector('.popup__button')
+const buttonSubmitPhoto = popupAddPhoto.querySelector('.popup__button')
+
+const preloadAnimationCanceling = () => {
+  popups.forEach((popup) => popup.classList.add('popup_animation'));
+};
 
 const openPopup = (popup) => {
   popup.classList.add('popup_opened');
   document.addEventListener('keydown',closeEsc);
-  popup.addEventListener('click',closeOverlay);
-  enableValidation()
 };
 
 const closePopup = (popup) => {
   popup.classList.remove('popup_opened');
   document.removeEventListener('keydown',closeEsc);
-  popup.removeEventListener('click',closeOverlay);
-  deleteSpan();
 };
 
 const openEditProfilePopup = () => {
+  deleteSpan(selectorValidation);
   inputAddNameProfile.value = nameProfile.textContent;
   inputAddJobProfile.value = jobProfile.textContent;
+  enableButton(buttonSubmitProfile,selectorValidation);
   openPopup(popupProfile);
 };
 
 const openAddPhotoPopup = () => {
-  inputAddPlacePhoto.value = '';
-  inputAddUrlPhoto.value = '';
+  formAddPhoto.reset();
+  deleteSpan(selectorValidation);
+  disableButton(buttonSubmitPhoto,selectorValidation);
   openPopup(popupAddPhoto);
 };
 
@@ -51,22 +56,18 @@ const openLargePhotoPopup = (evt) => {
 };
 
 popups.forEach((popup) => {
-  const buttonClose = popup.querySelector('.popup__close-icon');
-  buttonClose.addEventListener("click",() => {
-    closePopup(popup);
-  });
-});
+  popup.addEventListener('mousedown',(event) => {
+    const targetClassList = event.target.classList;
+    if (targetClassList.contains('popup') || targetClassList.contains('popup__close-icon-img')) {
+      closePopup(popup);
+    }
+  })
+})
 
 const closeEsc = (evt) => {
   if (evt.key === 'Escape') {
     const popupOpen = document.querySelector('.popup_opened');
     closePopup(popupOpen);
-  }
-}
-
-const closeOverlay = (evt) => {
-  if (evt.target === evt.currentTarget) {
-    closePopup(evt.currentTarget);
   }
 }
 
@@ -81,8 +82,7 @@ const submitFormHandlerPhoto = (evt) => {
   evt.preventDefault();
   renderCard({ name: inputAddPlacePhoto.value,link: inputAddUrlPhoto.value })
   closePopup(popupAddPhoto);
-  inputAddPlacePhoto.value = '';
-  inputAddUrlPhoto.value = '';
+  formAddPhoto.reset();
 };
 
 const handleDeleteCard = (evt) => {
@@ -127,3 +127,4 @@ formAddProfile.addEventListener('submit',submitFormHandlerProfile);
 formAddPhoto.addEventListener('submit',submitFormHandlerPhoto);
 buttonOpenPopupProfile.addEventListener('click',openEditProfilePopup);
 buttonOpenPopupPhoto.addEventListener('click',openAddPhotoPopup);
+window.addEventListener('DOMContentLoaded',preloadAnimationCanceling);
