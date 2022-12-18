@@ -1,7 +1,10 @@
+import initialCards from './data.js';
+import Card from './Card.js';
+import FormValidator from './FormValidator.js';
+
 const popups = document.querySelectorAll('.popup');
 const popupProfile = document.querySelector('.popup_type_profile');
 const popupAddPhoto = document.querySelector('.popup_type_photo');
-const popupLargePhoto = document.querySelector('.popup_type_large-photo');
 const buttonOpenPopupProfile = document.querySelector('.profile__edit-button');
 const buttonOpenPopupPhoto = document.querySelector('.profile__add-button');
 const inputAddNameProfile = document.querySelector('.popup__input_text_name');
@@ -13,64 +16,73 @@ const inputAddUrlPhoto = document.querySelector('.popup__input_text_url');
 const formAddProfile = document.querySelector('.popup__form_block_profile');
 const formAddPhoto = document.querySelector('.popup__form_block_photo');
 const elementsTemplateContainer = document.querySelector('.elements__container');
-const templateAddCard = document.querySelector('#template-elements').content;
+const popupLargePhoto = document.querySelector('.popup_type_large-photo');
 const largePhoto = document.querySelector('.popup__large-photo');
 const captionLargePhoto = document.querySelector('.popup__figcaption');
-const buttonSubmitProfile = popupProfile.querySelector('.popup__button')
-const buttonSubmitPhoto = popupAddPhoto.querySelector('.popup__button')
 
+const selectorValidation = {
+  formSelector: '.popup__form',
+  inputSelector: '.popup__input',
+  submitButtonSelector: '.popup__button',
+  spanSelector: '.popup__input-error',              // Добавлен селектор span для сброса ошибок
+  inactiveButtonClass: 'popup__button_disabled',
+  inputErrorClass: 'popup__input-error',
+  errorClass: 'popup__input-error_active'
+};
+
+// Плавное открытие и закрытие popup
 const preloadAnimationCanceling = () => {
   popups.forEach((popup) => popup.classList.add('popup_animation'));
 };
 
+// Открытие popup
 const openPopup = (popup) => {
   popup.classList.add('popup_opened');
   document.addEventListener('keydown',closeEsc);
 };
 
+// Закрытие popup
 const closePopup = (popup) => {
   popup.classList.remove('popup_opened');
   document.removeEventListener('keydown',closeEsc);
 };
 
+// Выполняемые действия при открытии popup профиля
 const openEditProfilePopup = () => {
-  deleteSpan(selectorValidation);
+  profileValidate._deleteSpan();
   inputAddNameProfile.value = nameProfile.textContent;
   inputAddJobProfile.value = jobProfile.textContent;
-  enableButton(buttonSubmitProfile,selectorValidation);
+  profileValidate._enableButton();
   openPopup(popupProfile);
 };
 
+// Выполняемые действия при открытии popup добавления фото
 const openAddPhotoPopup = () => {
   formAddPhoto.reset();
-  deleteSpan(selectorValidation);
-  disableButton(buttonSubmitPhoto,selectorValidation);
+  photoValidate._deleteSpan();
+  photoValidate._disableButton();
   openPopup(popupAddPhoto);
 };
 
-const openLargePhotoPopup = (evt) => {
-  largePhoto.src = evt.target.src;
-  largePhoto.alt = evt.target.alt;
-  captionLargePhoto.textContent = evt.target.alt;
-  openPopup(popupLargePhoto);
-};
-
+// Закрытие popup по кнопке или при нажатии на слой
 popups.forEach((popup) => {
   popup.addEventListener('mousedown',(event) => {
     const targetClassList = event.target.classList;
     if (targetClassList.contains('popup') || targetClassList.contains('popup__close-icon-img')) {
       closePopup(popup);
     }
-  })
-})
+  });
+});
 
+// Закрытие popup через Esc
 const closeEsc = (evt) => {
   if (evt.key === 'Escape') {
     const popupOpen = document.querySelector('.popup_opened');
     closePopup(popupOpen);
   }
-}
+};
 
+// Сабмит popup профиля
 const submitFormHandlerProfile = (evt) => {
   evt.preventDefault();
   nameProfile.textContent = inputAddNameProfile.value;
@@ -78,53 +90,40 @@ const submitFormHandlerProfile = (evt) => {
   closePopup(popupProfile);
 };
 
+// Сабмит popup добавления фото
 const submitFormHandlerPhoto = (evt) => {
   evt.preventDefault();
-  renderCard({ name: inputAddPlacePhoto.value,link: inputAddUrlPhoto.value })
+  renderCard(inputAddPlacePhoto.value,inputAddUrlPhoto.value);
   closePopup(popupAddPhoto);
   formAddPhoto.reset();
 };
 
-const handleDeleteCard = (evt) => {
-  evt.target.closest('.elements__card').remove();
-}
-
-const handleLikeCard = (evt) => {
-  evt.target.classList.toggle('elements__heart_active');
-}
-
-// Генерация карточки
-const createCard = (card) => {
-  const newCard = templateAddCard.querySelector('.elements__card').cloneNode(true);
-
-  const title = newCard.querySelector('.elements__title');
-  title.textContent = card.name;
-  const img = newCard.querySelector('.elements__pic');
-  img.src = card.link;
-  img.alt = card.name
-  img.addEventListener('click',openLargePhotoPopup)
-
-  const deleteBtn = newCard.querySelector('.elements__recycle-bin');
-  deleteBtn.addEventListener('click',handleDeleteCard);
-
-  const likeBtn = newCard.querySelector('.elements__heart');
-  likeBtn.addEventListener('click',handleLikeCard);
-
-  return newCard;
+// Создаем экземпляр Card и добавляем в DOM
+const renderCard = (name,link) => {
+  const card = new Card(name,link);
+  const elementCard = card.createCard();
+  elementsTemplateContainer.prepend(elementCard);
 };
 
-// Добавление карточки
-const renderCard = (name,img) => {
-  elementsTemplateContainer.prepend(createCard(name,img));
-};
-
-// Рендер всех карточек
-initialCards.forEach((name,img) => {
-  renderCard(name,img);
+// Загрузка карточек из массива
+initialCards.forEach((item) => {
+  renderCard(item.name,item.link);
 });
 
+// Создаем экземпляр FormValidator для каждой формы
+const profileValidate = new FormValidator(selectorValidation,formAddProfile);
+const photoValidate = new FormValidator(selectorValidation,formAddPhoto);
+
+// Запускаем валидацию
+profileValidate.enableValidation();
+photoValidate.enableValidation();
+
+// События и обработчики
 formAddProfile.addEventListener('submit',submitFormHandlerProfile);
 formAddPhoto.addEventListener('submit',submitFormHandlerPhoto);
 buttonOpenPopupProfile.addEventListener('click',openEditProfilePopup);
 buttonOpenPopupPhoto.addEventListener('click',openAddPhotoPopup);
 window.addEventListener('DOMContentLoaded',preloadAnimationCanceling);
+
+
+export { popupLargePhoto,largePhoto,captionLargePhoto,openPopup };
