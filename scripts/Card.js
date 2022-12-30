@@ -1,16 +1,21 @@
-import { popupLargePhoto,largePhoto,captionLargePhoto,openPopup } from './index.js';
+import { openPopup,popupLargePhoto,largePhoto,captionLargePhoto } from '../utils/utils.js';
 
 class Card {
   constructor(name,link,templateSelector) {
     this._name = name;
     this._link = link;
     this._templateSelector = templateSelector;
+
+    this._element = this._getTemplate();
+
+    this._picTitle = this._element.querySelector('.elements__title');
+    this._pic = this._element.querySelector('.elements__pic');
   }
 
   // Забираем разметку из HTML и клонируем элемент
   _getTemplate() {
     const elementCard = document
-      .querySelector('#template-elements').content
+      .querySelector(this._templateSelector).content
       .querySelector('.elements__card').cloneNode(true);
 
     return elementCard;
@@ -18,7 +23,7 @@ class Card {
 
   // События и обработчики для методов Card
   _setEventListener() {
-    this._element.querySelector('.elements__pic').addEventListener('click',() => {
+    this._pic.addEventListener('click',() => {
       this._openLargePhotoPopup();
     });
 
@@ -51,11 +56,11 @@ class Card {
 
   // Записываем разметку в приватное поле _element, добавляем данные и возвращаем.
   createCard() {
-    this._element = this._getTemplate();
     this._setEventListener();
-    this._element.querySelector('.elements__title').textContent = this._name;
-    this._element.querySelector('.elements__pic').src = this._link;
-    this._element.querySelector('.elements__pic').alt = this._caption;
+    this._picTitle.textContent = this._name;
+    this._pic.src = this._link;
+    this._pic.alt = this._caption;
+
 
     return this._element;
   }

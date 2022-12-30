@@ -1,6 +1,7 @@
 import initialCards from './data.js';
 import Card from './Card.js';
 import FormValidator from './FormValidator.js';
+import { openPopup,closePopup } from '../utils/utils.js';
 
 const popups = document.querySelectorAll('.popup');
 const popupProfile = document.querySelector('.popup_type_profile');
@@ -16,9 +17,6 @@ const inputAddUrlPhoto = document.querySelector('.popup__input_text_url');
 const formAddProfile = document.querySelector('.popup__form_block_profile');
 const formAddPhoto = document.querySelector('.popup__form_block_photo');
 const elementsTemplateContainer = document.querySelector('.elements__container');
-const popupLargePhoto = document.querySelector('.popup_type_large-photo');
-const largePhoto = document.querySelector('.popup__large-photo');
-const captionLargePhoto = document.querySelector('.popup__figcaption');
 
 const selectorValidation = {
   formSelector: '.popup__form',
@@ -35,32 +33,20 @@ const preloadAnimationCanceling = () => {
   popups.forEach((popup) => popup.classList.add('popup_animation'));
 };
 
-// Открытие popup
-const openPopup = (popup) => {
-  popup.classList.add('popup_opened');
-  document.addEventListener('keydown',closeEsc);
-};
-
-// Закрытие popup
-const closePopup = (popup) => {
-  popup.classList.remove('popup_opened');
-  document.removeEventListener('keydown',closeEsc);
-};
-
 // Выполняемые действия при открытии popup профиля
 const openEditProfilePopup = () => {
-  profileValidate._deleteSpan();
+  profileValidate.removeValidationErrors();
   inputAddNameProfile.value = nameProfile.textContent;
   inputAddJobProfile.value = jobProfile.textContent;
-  profileValidate._enableButton();
+  profileValidate.enableButton();
   openPopup(popupProfile);
 };
 
 // Выполняемые действия при открытии popup добавления фото
 const openAddPhotoPopup = () => {
   formAddPhoto.reset();
-  photoValidate._deleteSpan();
-  photoValidate._disableButton();
+  photoValidate.removeValidationErrors();
+  photoValidate.disableButton();
   openPopup(popupAddPhoto);
 };
 
@@ -73,14 +59,6 @@ popups.forEach((popup) => {
     }
   });
 });
-
-// Закрытие popup через Esc
-const closeEsc = (evt) => {
-  if (evt.key === 'Escape') {
-    const popupOpen = document.querySelector('.popup_opened');
-    closePopup(popupOpen);
-  }
-};
 
 // Сабмит popup профиля
 const submitFormHandlerProfile = (evt) => {
@@ -100,7 +78,7 @@ const submitFormHandlerPhoto = (evt) => {
 
 // Создаем экземпляр Card и добавляем в DOM
 const renderCard = (name,link) => {
-  const card = new Card(name,link);
+  const card = new Card(name,link,'#template-elements');
   const elementCard = card.createCard();
   elementsTemplateContainer.prepend(elementCard);
 };
@@ -124,6 +102,3 @@ formAddPhoto.addEventListener('submit',submitFormHandlerPhoto);
 buttonOpenPopupProfile.addEventListener('click',openEditProfilePopup);
 buttonOpenPopupPhoto.addEventListener('click',openAddPhotoPopup);
 window.addEventListener('DOMContentLoaded',preloadAnimationCanceling);
-
-
-export { popupLargePhoto,largePhoto,captionLargePhoto,openPopup };

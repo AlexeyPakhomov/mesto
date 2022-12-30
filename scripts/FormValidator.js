@@ -16,7 +16,7 @@ class FormValidator {
   }
 
   // Удаляем ошибки если закрыть popup без сохранения с ошибками
-  _deleteSpan() {
+  removeValidationErrors() {
     this._inputs.forEach((element) => {
       element.classList.remove(this._inputErrorClass);
     });
@@ -57,13 +57,13 @@ class FormValidator {
   }
 
   // Отключение кнопки "Сохранить"
-  _disableButton() {
+  disableButton() {
     this._buttonElement.classList.add(this._inactiveButtonClass);
     this._buttonElement.setAttribute('disabled',true);
   }
 
   // Включение кнопки "Сохранить"
-  _enableButton() {
+  enableButton() {
     this._buttonElement.classList.remove(this._inactiveButtonClass);
     this._buttonElement.removeAttribute('disabled');
   }
@@ -71,9 +71,9 @@ class FormValidator {
   // Переключатель для кнопки "Сохранить"
   _toggleButtonState() {
     if (this._hasInvalidInput(this._inputs)) {
-      this._disableButton();
+      this.disableButton();
     } else {
-      this._enableButton();
+      this.enableButton();
     }
   }
 
