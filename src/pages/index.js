@@ -83,6 +83,7 @@ formAddCardPhoto.setEventListeners();
 buttonOpenPopupPhoto.addEventListener('click',() => {
   formAddCardPhoto.open();
   photoValidate.removeValidationErrors();
+  photoValidate.disableButton();
 });
 
 // Создаем экземпляр FormValidator для каждой формы

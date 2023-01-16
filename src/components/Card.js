@@ -8,6 +8,7 @@ class Card {
     this._element = this._getTemplate();
     this._pic = this._element.querySelector('.elements__pic');
     this._picTitle = this._element.querySelector('.elements__title');
+    this._likeCard = this._element.querySelector('.elements__heart');
   }
 
   // Забираем разметку из HTML и клонируем элемент
@@ -46,11 +47,12 @@ class Card {
   // Удаление карточки
   _handleDeleteCard() {
     this._element.remove();
+    this._element = null;
   }
 
   // Лайк карточки
   _handleLikeCard() {
-    this._element.querySelector('.elements__heart').classList.toggle('elements__heart_active');
+    this._likeCard.classList.toggle('elements__heart_active');
   }
 }
 
