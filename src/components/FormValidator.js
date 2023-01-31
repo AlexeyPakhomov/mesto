@@ -17,14 +17,12 @@ class FormValidator {
 
   // Удаляем ошибки если закрыть popup без сохранения с ошибками
   removeValidationErrors() {
-    this._inputs.forEach((element) => {
-      element.classList.remove(this._inputErrorClass);
+    this._inputs.forEach((formInput) => {
+      this._hideInputError(formInput);
     });
-    this._spans.forEach((element) => {
-      element.classList.remove(this._errorClass);
-      element.textContent = '';
-    });
+    this._toggleButtonState();
   }
+
 
   // Связываем инпут с ошибкой и показываем её
   _showInputError(inputElement,errorMessage) {

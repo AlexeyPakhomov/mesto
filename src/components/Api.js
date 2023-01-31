@@ -9,7 +9,7 @@ class Api {
     if (res.ok) {
       return res.json();
     }
-    return Promise.reject(`Ошибка(статус): ${res.status,res.statusText}`);
+    return Promise.reject(`Ошибка(статус): ${res.status}`);
   }
 
   getUserInfo() {
@@ -32,7 +32,7 @@ class Api {
       headers: this._headers,
       body: JSON.stringify({
         name: data.name,
-        about: data.specialization
+        about: data.about
       })
     })
       .then(this._checkResponse);

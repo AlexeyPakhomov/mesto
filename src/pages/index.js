@@ -12,9 +12,6 @@ import {
   popups,
   buttonOpenPopupAvatar,
   formEditAvatar,
-  userAvatar,
-  userName,
-  userJob
 } from '../utils/constants.js';
 
 import Card from '../components/Card.js';
@@ -27,7 +24,7 @@ import Api from '../components/Api.js';
 import PopupWithConfirmation from '../components/PopupWithConfirmation.js';
 
 // Класс UserInfo отвечает за управление отображением информации о пользователе на странице.
-const userInfo = new UserInfo('.profile__name','.profile__specialization');
+const userInfo = new UserInfo('.profile__name','.profile__specialization','.profile__avatar');
 // Создаем экземпляр попап большого фото
 const popupLargePhoto = new PopupWithImage('.popup_type_large-photo');
 // Создаем экземпляр попап удаления карточки
@@ -41,27 +38,21 @@ const api = new Api({
   }
 });
 
-api
-  .getUserInfo()
-  .then((res) => {
-    userAvatar.src = res.avatar;
-    userName.textContent = res.name;
-    userJob.textContent = res.about;
-  })
-  .catch((err) => console.log(`Ошибка получения информации пользователя: ${err}`));
+let userId;
 
-api
-  .getAllCards()
-  .then(res => {
-    cardList.renderItems(res);
+Promise.all([api.getUserInfo(),api.getAllCards()])
+  .then(([userData,cardsData]) => {
+    userId = userData._id;
+    userInfo.setUserInfo(userData);
+    cardList.renderItems(cardsData);
   })
-  .catch((err) => console.log(`Ошибка загрузки карточек: ${err}`));
+  .catch((err) => console.log(`Ошибка получения данных: ${err}`));
 
 // Создаем экземпляр Card
 const renderCard = (data) => {
   const card = new Card({
     data,
-    userId: 'f4a5c7773c8c0bcec2d8921e',
+    userId: userId,
     handleCardClick: (name,link) => {
       popupLargePhoto.open(name,link);
     },
@@ -105,12 +96,11 @@ const cardList = new Section({
 const formEditUser = new PopupWithForm({
   popupSelector: '.popup_type_profile',
   handleFormSubmit: ((data) => {
-    userInfo.setUserInfo({ name: data.name,specialization: data.specialization });
     formEditUser.renderLoading(true);
     api.
       editProfile(data)
       .then((res) => {
-        res.name,res.specialization;
+        userInfo.setUserInfo(res);
         formEditUser.close();
       })
       .catch((err) => console.log(`Ошибка редактирования данных пользователя: ${err}`))
@@ -129,6 +119,30 @@ buttonOpenPopupProfile.addEventListener('click',() => {
   formEditUser.open();
   profileValidate.enableButton();
   profileValidate.removeValidationErrors();
+});
+
+// Создание попапа с формой редактирования авы
+const formAvatar = new PopupWithForm({
+  popupSelector: '.popup_type_avatar',
+  handleFormSubmit: ((data) => {
+    formAvatar.renderLoading(true);
+    api
+      .editAvatar(data)
+      .then((res) => {
+        userInfo.setUserInfo(res);
+        formAvatar.close();
+      })
+      .catch((err) => console.log(`Ошибка при редактировании аватарки: ${err}`))
+
+      .finally(() => {
+        formAvatar.renderLoading(false);
+      });
+  })
+});
+
+buttonOpenPopupAvatar.addEventListener('click',() => {
+  formAvatar.open();
+  avatarValidate.removeValidationErrors();
 });
 
 // Создание попапа с формой добавления новой карточки
@@ -154,30 +168,6 @@ buttonOpenPopupPhoto.addEventListener('click',() => {
   formAddCardPhoto.open();
   photoValidate.removeValidationErrors();
   photoValidate.disableButton();
-});
-
-// Создание попапа с формой редактирования авы
-const formAvatar = new PopupWithForm({
-  popupSelector: '.popup_type_avatar',
-  handleFormSubmit: ((data) => {
-    formAvatar.renderLoading(true);
-    api
-      .editAvatar(data)
-      .then((res) => {
-        userAvatar.src = res.avatar;
-        formAvatar.close();
-      })
-      .catch((err) => console.log(`Ошибка при редактировании аватарки: ${err}`))
-
-      .finally(() => {
-        formAvatar.renderLoading(false);
-      });
-  })
-});
-
-buttonOpenPopupAvatar.addEventListener('click',() => {
-  formAvatar.open();
-  avatarValidate.removeValidationErrors();
 });
 
 formEditUser.setEventListeners();

@@ -1,7 +1,8 @@
 class UserInfo {
-  constructor(nameSelector,specializationSelector) {
+  constructor(nameSelector,specializationSelector,avatarSelector) {
     this._nameUser = document.querySelector(nameSelector);
     this._specializationUser = document.querySelector(specializationSelector);
+    this._avatarSelector = document.querySelector(avatarSelector);
   }
 
   //Возвращает объект с данными пользователя. Метод нужен чтобы подставить данные пользователя в форму при открытии.
@@ -11,10 +12,11 @@ class UserInfo {
     return { nameUser,specializationUser };
   }
 
-  //Принимает новые данные пользователя и добавляет их на страницу.
-  setUserInfo({ name,specialization }) {
-    this._nameUser.textContent = name;
-    this._specializationUser.textContent = specialization;
+  // Принимает новые данные пользователя и добавляет их на страницу.
+  setUserInfo(data) {
+    this._nameUser.textContent = data.name;
+    this._specializationUser.textContent = data.about;
+    this._avatarSelector.src = data.avatar;
   }
 }
 

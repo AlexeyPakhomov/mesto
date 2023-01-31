@@ -9,9 +9,6 @@ const popups = document.querySelectorAll('.popup');
 
 const buttonOpenPopupAvatar = document.querySelector('.profile__edit-avatar');
 const formEditAvatar = document.querySelector('.popup__form_block_avatar');
-const userAvatar = document.querySelector('.profile__avatar');
-const userName = document.querySelector('.profile__name');
-const userJob = document.querySelector('.profile__specialization');
 
 const selectorValidation = {
   formSelector: '.popup__form',
@@ -23,4 +20,4 @@ const selectorValidation = {
   errorClass: 'popup__input-error_active'
 };
 
-export { buttonOpenPopupProfile,buttonOpenPopupPhoto,inputAddNameProfile,inputAddJobProfile,formAddProfile,formAddPhoto,elementsTemplateContainer,selectorValidation,popups,buttonOpenPopupAvatar,formEditAvatar,userAvatar,userName,userJob };
+export { buttonOpenPopupProfile,buttonOpenPopupPhoto,inputAddNameProfile,inputAddJobProfile,formAddProfile,formAddPhoto,elementsTemplateContainer,selectorValidation,popups,buttonOpenPopupAvatar,formEditAvatar };
