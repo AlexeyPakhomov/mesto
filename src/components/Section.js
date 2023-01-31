@@ -1,19 +1,22 @@
 class Section {
-  constructor({ items,renderer },containerSelector) {
-    this._items = items;
+  constructor({ renderer },containerSelector) {
     this._renderer = renderer;
     this._container = document.querySelector(containerSelector);
   }
 
 
-  renderItems() {
-    this._items.forEach((element) => {
+  renderItems(items) {
+    items.forEach((element) => {
       this._renderer(element);
     });
   }
 
   // Метод который принимает DOM-элемент и добавляет его в контейнер
-  addItem(element) {
+  addItemAppend(element) {
+    this._container.append(element);
+  }
+
+  addItemPrepend(element) {
     this._container.prepend(element);
   }
 }

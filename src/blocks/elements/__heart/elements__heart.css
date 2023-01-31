@@ -1,7 +1,8 @@
 .elements__heart {
   padding: 0;
+  margin-bottom: 3px;
   align-self: center;
-  max-width: 22px;
+  min-width: 22px;
   width: 100%;
   min-height: 19px;
   background: url(../../../images/heart.svg) center no-repeat;
